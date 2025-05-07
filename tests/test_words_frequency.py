@@ -48,3 +48,20 @@ def test_words_frequency_case_sensitivity():
     n = 2
     expected_output = [("bar", 3), ("foo", 3)]
     assert words_frequency(sentence, n) == expected_output
+
+
+def test_words_frequency_zero_n():
+    sentence = "foo bar baz"
+    n = 0
+    expected_output = []
+    assert words_frequency(sentence, n) == expected_output
+
+
+def test_words_frequency_negative_n():
+    sentence = "foo bar baz"
+    n = -15
+    try:
+        words_frequency(sentence, n)
+        assert False, "Expected ValueError for negative n"
+    except ValueError as e:
+        assert str(e) == "n must be greater than or equal to zero."
